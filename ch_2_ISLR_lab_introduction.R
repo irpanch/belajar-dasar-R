@@ -118,8 +118,7 @@ dim(A)
 # Loading data
 ## read.table untuk import write.table untuk export
 
-Auto=read.table("Auto.csv")
+Auto=read.table("Auto.data")
+fix(Auto)
 
-## atau dengan read.csv
-library(readr)
-Auto <- read_csv("Auto.csv")
+## update sampai index halaman 64
