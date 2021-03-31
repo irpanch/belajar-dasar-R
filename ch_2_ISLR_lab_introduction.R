@@ -1,4 +1,5 @@
-# ISLR. chapter 2. Lab: Introduction to R
+# An Introduction to Statistical Learning (ISLR). (James, et all 2013) 
+# chapter 2. Lab: Introduction to R
 
 # create a matrix
 x = matrix(data=c(1,2,3,4), nrow = 2, ncol = 2)
@@ -45,7 +46,7 @@ plot(x,y)
 plot(x,y,xlab="this is the x-axis",ylab="this is the
      y axis",main="Plot of X vs Y", col="green")
 
-pdf("Figure.pdf")
+#pdf("Figure.pdf")
 dev.off()  # jalankan terus hingga null device = 1. 
 
 x=seq(1,10)
@@ -121,4 +122,45 @@ dim(A)
 Auto=read.table("Auto.data")
 fix(Auto)
 
-## update sampai index halaman 64
+Auto=read.csv("Auto.csv",header=T,na.strings = "?")
+fix(Auto)
+dim(Auto)
+Auto[1:4,]
+
+Auto=na.omit(Auto)
+
+names(Auto)
+
+# Additional graphics and numerical summaries
+plot(Auto$cylinders, Auto$mpg)
+attach(Auto)
+plot(cylinders,mpg)
+
+## change cylinders to factor
+cylinders=as.factor(cylinders)
+plot(cylinders,mpg)
+plot(cylinders,mpg, col="red")
+plot(cylinders,mpg, col="red",varwidth=T)
+plot(cylinders,mpg, col="red",varwidth=T,
+     horizontal=T)
+plot(cylinders,mpg, col="red",varwidth=T,
+     xlab="cylinders",ylab="MPG")
+
+hist(mpg)
+hist(mpg,col = 2) # number 2 is red
+hist(mpg,col = 2, breaks = 15)
+
+## for making scatter plot, we can use "pairs"
+pairs(Auto)
+pairs(~mpg+displacement+horsepower+weight+acceleration
+      , Auto)
+
+plot(horsepower,mpg)
+# untuk cek titik di grafik..ctrl+clik, lalu escape
+identify(horsepower,mpg,name) 
+
+summary(Auto)
+summary(mpg)
+
+## update to index page 66 (or page 50 on the book)
+## next is exercise part..look for new R file
