@@ -1,0 +1,67 @@
+---
+title: "Quarto for Academics"
+format: 
+  html:
+    code-link: true
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+[source](https://www.youtube.com/watch?v=EbAAmrB0luA&list=PL_gDgQwtxiJ1tz9ESxT_EE8kzhgXXGYBl "Video Quarto for academics")
+
+## Introduction
+
+## Data
+
+For this analysis we'll use the `penguins` dataset from the [palmerpenguins](https://cloud.r-project.org/web/packages/palmerpenguins/index.html) package.
+
+```{r}
+#| label: load-packages
+#| message: false
+#| warning: false
+
+
+library(tidyverse)
+library(ggthemes)
+library(palmerpenguins)
+library(gt)
+```
+
+```{r}
+glimpse(penguins)
+```
+
+## Species
+
+@fig-bill-dims-species is a scatter plot of species of penguins.
+
+```{r}
+#| label: fig-bill-dims-species
+#| fig-width: 5
+#| fig-asp: 0.618
+#| fig-alt: |
+#|  A scatterplot of penguins's bill depth and length, colored by 
+#|  species.
+#| fig-cap: |
+#|  test scatterplot
+#|  plot in penguins package
+#| output-location: slide
+
+ggplot(
+  penguins,
+  aes(
+    x = bill_length_mm, y=bill_depth_mm,
+    color = species, shape = species
+  )
+) +
+  geom_point()+
+  scale_color_colorblind()+
+  theme_minimal()+
+  theme(legend.position = "top")+
+  labs(x="Bill length (mm)", y = "Bill depth (mm)")
+
+
+```
